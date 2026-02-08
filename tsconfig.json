@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "composite": true
+    },
+    "files": [],
+    "references": [
+        { "path": "./packages/common" },
+        { "path": "./user-service" },
+        // { "path": "./gateway-service" },
+        { "path": "./notification-service" },
+        { "path": "./order-service" },
+        { "path": "./payment-service" },
+        { "path": "./product-service" },
+        { "path": "./cart-service" }
+    ]
+}
