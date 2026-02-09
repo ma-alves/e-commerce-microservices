@@ -1,25 +1,27 @@
-import express from 'express'
-import connectDB from './src/db/db'
+import express from "express";
+import dotenv from "dotenv";
+import authRouter from "./routes/authRoute";
+import userRouter from "./routes/userRoute";
+import connectDB from "./config/database";
+import cookieParser from "cookie-parser";
+import authenticateUser from "./middlewares/authMiddleware";
 
-const app = express()
-const port = process.env.PORT || 3000
+dotenv.config();
 
-app.use(express.json())
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const startServer = async () => {
-  try {
-    // await connectDB()
-    Promise.all([connectDB])
-    // log aqui
-    
-    app.listen(port, () => {
-      console.log(`[user-service] Servidor rodando em localhost:${port}`)
-    })
+await connectDB();
 
-  } catch (error) {
-    console.error('[user-service] Erro ao iniciar servidor:', error.message)
-    process.exit(1)
-  }
-}
+app.use(express.json()); 
+app.use(cookieParser());
+app.use("/api", authRouter);
+app.use("/api/user", authenticateUser, userRouter); 
 
-startServer()
+app.get("/", (req, res) => {
+  res.send("JWT Authentication System is running!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
