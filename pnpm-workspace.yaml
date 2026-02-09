@@ -1,0 +1,9 @@
+packages:
+  - "cart-service/*"
+  - "order-service/*"
+  - "notification-service/*"
+  - "packages/*"
+  - "payment-service/*"
+  - "product-service/*"
+  - "user-service"
+  # - "api-gateway/*"

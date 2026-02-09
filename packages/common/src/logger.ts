@@ -26,4 +26,4 @@ export const createLogger = (options: CreateLoggerOptions): Logger => {
     transport,
     ...rest,
   });
-};
+}

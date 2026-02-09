@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import User, { IUser } from "../models/user.model";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-import { errorHandler } from "../utils/error.handler";
+import { errorHandler } from "../utils/error-handler";
 import { clearJWT, generateJWT } from "../utils/jwt.utils";
 
 dotenv.config();
